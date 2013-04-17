@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12D78" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="DiagramModel" representedClassName="DiagramModel" syncable="YES">
+        <attribute name="color" optional="YES" attributeType="String" valueTransformerName="UIColorRGBValueTransformer" syncable="YES"/>
+        <attribute name="height" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="width" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <relationship name="placedNotes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NoteModel" inverseName="diagram" inverseEntity="NoteModel" syncable="YES"/>
+        <relationship name="project" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ProjectModel" inverseName="diagrams" inverseEntity="ProjectModel" syncable="YES"/>
+        <relationship name="unplacedNotes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NoteModel" inverseName="diagram" inverseEntity="NoteModel" syncable="YES"/>
+    </entity>
+    <entity name="FeedbackModel" representedClassName="FeedbackModel" syncable="YES">
+        <attribute name="answerArray" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="questionArray" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="project" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ProjectModel" inverseName="feedbacks" inverseEntity="ProjectModel" syncable="YES"/>
+    </entity>
+    <entity name="NoteModel" representedClassName="NoteModel" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="font" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fontColor" optional="YES" attributeType="String" valueTransformerName="UIColorRGBValueTransformer" syncable="YES"/>
+        <attribute name="fontSize" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="noteColor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="x" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <attribute name="y" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
+        <relationship name="diagram" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="DiagramModel" inverseName="unplacedNotes" inverseEntity="DiagramModel" syncable="YES"/>
+    </entity>
+    <entity name="ProjectModel" representedClassName="ProjectModel" syncable="YES">
+        <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="details" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="diagrams" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DiagramModel" inverseName="project" inverseEntity="DiagramModel" syncable="YES"/>
+        <relationship name="feedbacks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FeedbackModel" inverseName="project" inverseEntity="FeedbackModel" syncable="YES"/>
+        <relationship name="surveys" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SurveyModel" inverseName="projectModel" inverseEntity="SurveyModel" syncable="YES"/>
+    </entity>
+    <entity name="SurveyModel" representedClassName="SurveyModel" syncable="YES">
+        <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="questionArray" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="projectModel" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ProjectModel" inverseName="surveys" inverseEntity="ProjectModel" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="DiagramModel" positionX="-47" positionY="9" width="128" height="148"/>
+        <element name="FeedbackModel" positionX="421" positionY="-87" width="128" height="105"/>
+        <element name="NoteModel" positionX="151" positionY="132" width="128" height="163"/>
+        <element name="ProjectModel" positionX="126" positionY="-144" width="128" height="135"/>
+        <element name="SurveyModel" positionX="387" positionY="156" width="128" height="105"/>
+    </elements>
+</model>
